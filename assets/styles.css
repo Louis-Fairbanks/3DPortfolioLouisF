@@ -1,0 +1,114 @@
+:root {
+    --offwhite: #f5f5f5;
+    --silver: #c0c0c0;
+    --metallic-blue: #1160b5;
+}
+
+.philosopher-regular {
+    font-family: "Philosopher", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, var(--silver) 0%, var(--offwhite) 33%, var(--offwhite) 67%, var(--silver) 100%);
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    opacity: 0.4;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, var(--silver) 0%, var(--offwhite) 33%, var(--offwhite) 67%, var(--silver) 100%);
+}
+
+svg {
+    width: 45rem;
+    font-weight: bold;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+svg text {
+    font-size: 25rem;
+    text-shadow: 0 0 1px var(--silver);
+    stroke-width: 2;
+    letter-spacing: -15px;
+}
+
+svg text.text-body {
+    fill: var(--metallic-blue);
+    animation: 5s animate-stroke;
+    animation-iteration-count: 1;
+}
+
+@keyframes animate-stroke {
+    0% {
+        fill: transparent;
+        stroke: var(--offwhite);
+        stroke-width: 3;
+        stroke-dasharray: 0 32%;
+    }
+
+    50% {
+        fill: transparent;
+        stroke: var(--metallic-blue);
+        stroke-width: 3;
+    }
+
+    80%,
+    100% {
+        fill: var(--metallic-blue);
+        stroke: transparent;
+        stroke-width: 0;
+        stroke-dasharray: 32% 0;
+    }
+}
+
+nav {
+    padding-top: 10%;
+}
+nav ul{
+    margin-left: 1rem;
+}
+nav ul li, .tagline-delayed{
+    visibility: hidden;
+    opacity: 0;
+}
+nav ul li{
+    padding-bottom: 2rem;
+    transform: translate3d(0, -1rem, 0);
+    transition-property: visibility, opacity, transform;
+    transition-duration: 1s;
+}
+nav li a {
+    font-size: 2rem;
+}
+.shown{
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+}
+.tagline-delayed{
+    transition-duration: 2s;
+    transition-property: visibility, opacity;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    font-size: 2rem;
+    text-align: center;
+}
+canvas{
+    display: block;
+    margin: 0 auto;
+}
